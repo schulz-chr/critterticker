@@ -1,0 +1,268 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+    font-family: Helvetica, sans-serif;
+    font-display: optional;
+}
+
+body {
+    background-image: url('../other images/background-nook-leaf.png')
+}
+
+header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    background: #1E7018;
+    color: white;
+    height: 5rem;
+    left: 2rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 630px) {
+    header .title {
+        display: none;
+        height: 1px;
+    }
+    header {
+        justify-content: center;
+        height: 5rem;
+    }
+    main {
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+    }
+}
+
+@media only screen and (max-width: 319px) {
+    header {
+        display: none;
+    }
+}
+
+.home {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    z-index: 5;
+    background: #1E7018;
+    color: white;
+    height: auto;
+}
+
+header .title,
+.home .title {
+    margin: auto 0;
+    font-size: 2rem;
+    padding: 0 2rem;
+}
+
+.help {
+    padding-left: 4px;
+    width: 2rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    position: fixed;
+    flex-flow: row wrap;
+    z-index: 6;
+    background: #1E7018;
+}
+
+.help-text {
+    display: none;
+    padding: 0 2px;
+    font-size: 1.5rem;
+    background: white;
+    color: black;
+    border: 1px solid black;
+    z-index: 7;
+}
+
+.help-icon {
+    max-height: 32px;
+    max-width: 32px;
+    position: fixed;
+    z-index: 6;
+}
+
+.help-icon:hover + .help-text {
+    display: inline-flex;
+    position: fixed;
+}
+
+nav ul,
+nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2rem;
+    list-style: none;
+    padding: 0 2rem;
+}
+
+nav ul li,
+nav ul li {
+}
+
+nav a img {
+    max-height: 64px;
+    max-width: 64px;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+
+
+main {
+    top: 6rem;
+}
+
+
+
+/*166,240,167,1*/
+.column {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 0.1rem;
+    margin: 0 0.5rem;
+}
+
+.critter-entry {
+    display: flex;
+    flex-flow: column wrap;
+    background-image: linear-gradient(164deg, rgba(150,217,145,1) 0%, rgba(42,145,34,1) 100%);
+    padding: 0.5rem 0.5rem;
+    border-radius: 2rem;
+    margin: 0.25rem 0;
+}
+
+.critter-entry .top {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.critter-entry .top img {
+    max-height: 128px;
+    max-width: 128px;
+}
+
+.entry-header {
+    text-align: center;
+}
+
+.entry-header h1,
+.entry-header h2 {
+
+}
+
+.active-month {
+    font-size: 1.25rem;
+    font-weight: 700
+}
+
+.inactive-month {
+
+}
+
+.entry-details {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+    column-gap: 15px;
+    row-gap: 10px;
+
+}
+
+.entry-details img {
+    max-height: 32px;
+    max-width: 32px;
+}
+
+.entry-details p {
+    align-content: center;
+    font-size: 1.25rem;
+}
+
+.entry-details .hours {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.entry-details .weather .any {
+    display: flex;
+    flex-flow: row;
+    column-gap: 0.5rem;
+}
+
+.entry-details .location {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.entry-details .price {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.entry-details .required-catches {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.entry-details .extra {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.entry-details .extra-fish img {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto;
+    width: auto;
+}
+
+.entry-details .size-divefish img {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: auto;
+    width: auto;
+}
+
+#disclaimer {
+}
+
+footer nav {
+    background: #1E7018;
+}

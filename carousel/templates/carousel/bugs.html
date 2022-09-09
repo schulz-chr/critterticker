@@ -1,0 +1,243 @@
+{% extends "carousel/base.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <div class="help">
+        <img class="help-icon" src="{% static 'carousel/other images/question-mark-round-line-icon.png' %}"
+         alt="question mark icon for help">
+        <p class="help-text">
+        Swipe right and left to see non-active,<br> active and soon active critters!
+        </p>
+    </div>
+    <header>
+        <h1 class="title">New Horizons Critter Ticker</h1>
+        <nav>
+            <ul class="navbar">
+{#                    <li>#}
+{#                        <a href="home">Home</a>#}
+{#                    </li>#}
+                <li class="current">
+                    <a href="bugs"><img src="{% static 'carousel/critter icons/b1.png' %}"
+                                        alt="icon for common butterfly"></a>
+                </li>
+                <li>
+                    <a href="fish"><img src="{% static 'carousel/critter icons/f57.png' %}"
+                                        alt="icon for horse mackerel"></a>
+                </li>
+                <li>
+                    <a href="seacreatures"><img src="{% static 'carousel/critter icons/df19.png' %}"
+                                                alt="icon for chambered nautilus"></a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="owl-carousel">
+        {% if bnot_active_number %}
+        <section class="column" id="not-active">
+            {% for critter in bug_list %}
+                {% if critter.month_check and not critter.time_check and not critter.time_check_soon %}
+                    <article class="critter-entry">
+                        <div class="top">
+                            <img src="{% static 'carousel/critter icons/' %}{{ critter.id }}.png" alt='icon for {{ critter.name }}'>
+
+                            <article class="entry-header">
+                                <h2>
+                                {% for entry in month_list %}
+                                    {% if entry.get_int in critter.get_month_int_list %}
+                                        <span class="active-month">{{ entry.get_abb }}</span>
+                                    {% else %}
+                                        <span class="inactive-month">{{ entry.get_abb }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                                </h2>
+                                <h1>{{ critter.name|title }} - Not Active</h1>
+                            </article>
+                        </div>
+
+                        <article class="entry-details">
+                            <div class="hours">
+                                <img src="{% static 'carousel/other images/clock-timing-icon.png' %}" alt="icon for analog clock">
+                                <p>{{ critter.get_hours_display }}</p>
+                            </div>
+
+                            <div class="weather">
+                                {% if critter.weather == "A" %}
+                                    <div class="any">
+                                        <img src="{%  static 'carousel/other images/day-sunny-icon.png' %}"
+                                             alt="icon for sunny weather">
+                                        <img src="{% static 'carousel/other images/cloud-rain-icon.png' %}"
+                                             alt="icon for rainy weather">
+                                    </div>
+                                {% elif critter.weather == "R" %}
+                                    <img src="{% static 'carousel/other images/cloud-rain-icon.png' %}" alt="icon for rainy weather">
+                                {% else %}
+                                    <img src="{% static 'carousel/other images/cloud-rain-icon-crossed-out.png' %}" alt="icon for rainy weather crossed out">
+                                {% endif %}
+                            </div>
+                            <div class="location">
+                                <img src="{% static 'carousel/other images/map-search-icon.png' %}" alt="icon for map search">
+                                <p>{{ critter.get_location_display }}</p>
+                            </div>
+
+
+                            <div class="price">
+                                <img src="{% static 'carousel/other images/bells_icon.png' %}" alt="icon for bells currency">
+                                <p>{{ critter.price }}</p>
+                            </div>
+
+    {#                checking if catches_req should be visible#}
+                            <div class="required-catches">
+                            {% if critter.catches_req > 0 %}
+                                <img src="{% static 'carousel/other images/fishing-net-icon.png' %}" alt="icon for fishing net">
+                                <p>after {{ critter.catches_req }} catches</p>
+                            {% endif %}
+                            </div>
+
+                        </article>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% if bactive_number %}
+        <section class="column" id="active">
+            {% for critter in bug_list %}
+                {% if critter.month_check and critter.time_check %}
+                    <article class="critter-entry">
+                        <div class="top">
+                            <img src="{% static 'carousel/critter icons/' %}{{ critter.id }}.png" alt='icon for {{ critter.name }}'>
+
+                            <article class="entry-header">
+                                <h2>
+                                {% for entry in month_list %}
+                                    {% if entry.get_int in critter.get_month_int_list %}
+                                        <span class="active-month">{{ entry.get_abb }}</span>
+                                    {% else %}
+                                        <span class="inactive-month">{{ entry.get_abb }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                                </h2>
+                                <h1>{{ critter.name|title }} - Active</h1>
+                            </article>
+                        </div>
+
+                        <article class="entry-details">
+                            <div class="hours">
+                                <img src="{% static 'carousel/other images/clock-timing-icon.png' %}" alt="icon for analog clock">
+                                <p>{{ critter.get_hours_display }}</p>
+                            </div>
+
+                            <div class="weather">
+                                {% if critter.weather == "A" %}
+                                    <div class="any">
+                                        <img src="{%  static 'carousel/other images/day-sunny-icon.png' %}"
+                                             alt="icon for sunny weather">
+                                        <img src="{% static 'carousel/other images/cloud-rain-icon.png' %}"
+                                             alt="icon for rainy weather">
+                                    </div>
+                                {% elif critter.weather == "R" %}
+                                    <img src="{% static 'carousel/other images/cloud-rain-icon.png' %}" alt="icon for rainy weather">
+                                {% else %}
+                                    <img src="{% static 'carousel/other images/cloud-rain-icon-crossed-out.png' %}" alt="icon for rainy weather crossed out">
+                                {% endif %}
+                            </div>
+                            <div class="location">
+                                <img src="{% static 'carousel/other images/map-search-icon.png' %}" alt="icon for map search">
+                                <p>{{ critter.get_location_display }}</p>
+                            </div>
+
+
+                            <div class="price">
+                                <img src="{% static 'carousel/other images/bells_icon.png' %}" alt="icon for bells currency">
+                                <p>{{ critter.price }}</p>
+                            </div>
+
+    {#                checking if catches_req should be visible#}
+                            <div class="required-catches">
+                            {% if critter.catches_req > 0 %}
+                                <img src="{% static 'carousel/other images/fishing-net-icon.png' %}" alt="icon for fishing net">
+                                <p>after {{ critter.catches_req }} catches</p>
+                            {% endif %}
+                            </div>
+
+                        </article>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </section>
+        {% endif %}
+        {% if bsoon_active_number %}
+        <section class="column" id="soon-active">
+            {% for critter in bug_list %}
+                {% if critter.month_check and critter.time_check_soon %}
+                    <article class="critter-entry">
+                        <div class="top">
+                            <img src="{% static 'carousel/critter icons/' %}{{ critter.id }}.png" alt='icon for {{ critter.name }}'>
+
+                            <article class="entry-header">
+                                <h2>
+                                {% for entry in month_list %}
+                                    {% if entry.get_int in critter.get_month_int_list %}
+                                        <span class="active-month">{{ entry.get_abb }}</span>
+                                    {% else %}
+                                        <span class="inactive-month">{{ entry.get_abb }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                                </h2>
+                                <h1>{{ critter.name|title }} - Soon Active</h1>
+                            </article>
+                        </div>
+
+                        <article class="entry-details">
+                            <div class="hours">
+                                <img src="{% static 'carousel/other images/clock-timing-icon.png' %}" alt="icon for analog clock">
+                                <p>{{ critter.get_hours_display }}</p>
+                            </div>
+
+                            <div class="weather">
+                                {% if critter.weather == "A" %}
+                                    <div class="any">
+                                        <img src="{%  static 'carousel/other images/day-sunny-icon.png' %}"
+                                             alt="icon for sunny weather">
+                                        <img src="{% static 'carousel/other images/cloud-rain-icon.png' %}"
+                                             alt="icon for rainy weather">
+                                    </div>
+                                {% elif critter.weather == "R" %}
+                                    <img src="{% static 'carousel/other images/cloud-rain-icon.png' %}" alt="icon for rainy weather">
+                                {% else %}
+                                    <img src="{% static 'carousel/other images/cloud-rain-icon-crossed-out.png' %}" alt="icon for rainy weather crossed out">
+                                {% endif %}
+                            </div>
+                            <div class="location">
+                                <img src="{% static 'carousel/other images/map-search-icon.png' %}" alt="icon for map search">
+                                <p>{{ critter.get_location_display }}</p>
+                            </div>
+
+
+                            <div class="price">
+                                <img src="{% static 'carousel/other images/bells_icon.png' %}" alt="icon for bells currency">
+                                <p>{{ critter.price }}</p>
+                            </div>
+
+    {#                checking if catches_req should be visible#}
+                            <div class="required-catches">
+                            {% if critter.catches_req > 0 %}
+                                <img src="{% static 'carousel/other images/fishing-net-icon.png' %}" alt="icon for fishing net">
+                                <p>after {{ critter.catches_req }} catches</p>
+                            {% endif %}
+                            </div>
+
+                        </article>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </section>
+        {% endif %}
+    </main>
+
+{% endblock %}

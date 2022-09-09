@@ -1,0 +1,43 @@
+{% extends "carousel/base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'carousel/css/style.css' %}?{%  now 'U' %}">
+{% endblock %}
+
+{% block content %}
+<div class="home">
+        <h1 class="title">New Horizons Critter Ticker</h1>
+        <nav>
+            <ul class="navbar">
+{#                    <li>#}
+{#                        <a href="home">Home</a>#}
+{#                    </li>#}
+                <li>
+                    <a href="bugs"><img src="{% static 'carousel/critter icons/b1.png' %}"
+                                        alt="icon for common butterfly"></a>
+                </li>
+                <li>
+                    <a href="fish"><img src="{% static 'carousel/critter icons/f57.png' %}"
+                                        alt="icon for horse mackerel"></a>
+                </li>
+                <li>
+                    <a href="seacreatures"><img src="{% static 'carousel/critter icons/df19.png' %}"
+                                                alt="icon for chambered nautilus"></a>
+                </li>
+            </ul>
+            <ul class="navbar extra">
+                <li>
+
+                </li>
+                <li>
+
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <main></main>
+{% endblock %}

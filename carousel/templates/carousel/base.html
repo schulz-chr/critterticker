@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Critter Ticker</title>
+    <link rel="stylesheet" href="{% static 'carousel/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'carousel/css/style.css' %}?{%  now 'U' %}">
+    {%  block head %}
+    {%  endblock %}
+</head>
+<body>
+        {% block content %}
+        {%  endblock %}
+    <footer id="disclaimer">
+        <p>This web project uses game sprites whose copyright is most likely held by the company that developed the<br>
+            game. This disclaimer emphasises that the limited number of sprite frames here are used solely for<br>
+            informational purposes in the form of a private web development project under the name<br>
+            "New Horizons Critter Ticker" - without commercial interest.<br>
+            Credit for the images and information goes to
+            <a href="https://docs.google.com/spreadsheets/d/13d_LAJPlxMa_DubPTuirkIV4DERBMXbrWQsmSh8ReK4/
+            edit#gid=1022368750">this spreadsheet</a>.</p>
+        <nav>
+            <ul class="navbar">
+                <li>
+                    <a href="https://nookipedia.com/wiki/Gyroid/New_Horizons"><img src="{% static 'carousel/other images/Gyroid_NH_Inv_Icon.png' %}"
+                                        alt="icon for Gyroids"></a>
+                </li>
+                <li>
+                    <a href="https://nookipedia.com/wiki/Art/New_Horizons"><img src="{% static 'carousel/other images/Twinkling_Painting_NH_Icon.png' %}"
+                                        alt="icon for Art"></a>
+                </li>
+                <li>
+                    <a href="https://nookipedia.com/wiki/Fossil/New_Horizons"><img src="{% static 'carousel/other images/Fossil_NH_Icon.png' %}"
+                                                alt="icon for Fossils"></a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+    <script src="{% static 'carousel/js/jquery.min.js' %}"></script>
+    <script src="{% static 'carousel/js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                center: true,
+                loop: false,
+                nav: true,
+                margin: 10,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                    },
+                    600:{
+                        items:2,
+                    },
+                    1000:{
+                        items:3,
+                    }
+                }
+
+            })
+        })
+    </script>
+</body>
+</html>
+
+{#        $(document).ready(function(){#}
+{#            $(".owl-carousel").owlCarousel();#}
+{#        });#}
